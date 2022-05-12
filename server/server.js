@@ -5,8 +5,15 @@ require('dotenv').config();
 
 //----------------------------------
 const express = require('express');
-const app = express();
 //----------------------------------
+
+
+//---------connecting the database-------------------
+require('./DB/index')
+//----------------connecting the database------------
+
+
+const app = express();
 
 
 //-------------------------------------
