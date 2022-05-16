@@ -5,8 +5,12 @@ require('dotenv').config();
 
 //----------------------------------
 const express = require('express');
-const app = express();
 //----------------------------------
+
+
+//---------connecting the database-------------------
+require('./DB/index')
+//----------------connecting the database------------
 
 
 //-------------allowing the web page to be requested from another domain outside the domain from which the first resource was served---------------------
@@ -14,17 +18,14 @@ const cors = require('cors');
 //----------------------------------
 
 
-// //---------------------------------------------
-// const path = require('path');
-// //---------------------------------------------
+//---------------------------------------------
+const path = require('path');
+//---------------------------------------------
 
 
 
 
-//---------connecting the database-------------------
-require('./DB/index')
-//----------------connecting the database------------
-
+const app = express();
 
 
 
