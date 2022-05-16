@@ -15,11 +15,11 @@ const cors = require('cors');
 //----------------------------------
 
 //----------------------------------
-// const userRoutes = require('./Routes/UserRout');
+const userRoutes = require('./Routes/UserRout');
 //----------------------------------
 
 //---------------------------------------------
-const path = require('path');
+// const path = require('path');
 //---------------------------------------------
 
 const app = express();
@@ -33,7 +33,7 @@ app.use(cors());
 app.use(express.json());
 //---------------------------------------
 
-// app.use('/',userRoutes);
+app.use('/users',userRoutes);
 
 const PORT = process.env.PORT || 7000
 
@@ -44,12 +44,12 @@ app.listen(PORT, ()=>{
 //----------------------------------
 
 
-app.get('/',(req,res)=>{res.send('server online')})
+// app.get('/',(req,res)=>{res.send('server online')})
 // //---------------------------------need to learn more about this------------------------------------------
-// if (process.env.NODE_ENV === 'producton'){
-//     app.use(express.static(path.join(__dirname,'../client/build')))
-//     app.get('*',(req,res)=>{
-//         res.sendFile(path.join(__dirname,'../client/build','index.html'))
-//     })
-// }
+if (process.env.NODE_ENV === 'producton'){
+    app.use(express.static(path.join(__dirname,'../client/build')))
+    app.get('*',(req,res)=>{
+        res.sendFile(path.join(__dirname,'../client/build','index.html'))
+    })
+}
 // //---------------------------------------------------------------------------

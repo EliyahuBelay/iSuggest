@@ -1,10 +1,15 @@
-const User = require('../Models/UserModel.model');
+const UserCollection = require('../Models/UserModel');
 
+module.exports = {
+    getUsers: async(req,res)=>{
+        await UserCollection.find()
+        .then(users => {res.status(200).send(users)})
+        .catch(err => res.status(500).send({massege: 'failed to get users',error:err}))
+    },
 
-const getUsers = (req, res) => {
-    User.find({})
-        .then(users => res.status(200).json(users))
-        .catch(err => res.status(500).json({ massege: 'failed to get users' ,error: err}))
-}
-
-module.exports = {getUsers};
+    getUserById: async (req,res)=>{
+        await UserCollection.findById({_id:req.params.id})
+        .then(users => res.status(200).send(users))
+        .catch(err => res.status(500).send({massege:'could not find the user',error:err}))
+    }
+};
