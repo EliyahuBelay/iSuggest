@@ -13,6 +13,8 @@ require('./DB/index')
 //----------------connecting the database------------
 
 
+const userRoutes = require('./Routes/UserRout.rout')
+
 //-------------allowing the web page to be requested from another domain outside the domain from which the first resource was served---------------------
 const cors = require('cors');
 //----------------------------------
@@ -39,6 +41,10 @@ app.use(cors());
 //*use* function defined that the server will be able to read json type
 app.use(express.json());
 //---------------------------------------
+
+
+app.use(userRoutes);
+
 
 const PORT = process.env.PORT || 7000
 
