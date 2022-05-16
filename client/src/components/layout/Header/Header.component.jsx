@@ -1,5 +1,5 @@
 import React from 'react'
-import { GetAllUsers } from '../../../services/usersService.service';
+import { GetAllUsers } from '../../../services/UsersService.service';
 
 function Header() {
   const GetUsers = () => {
