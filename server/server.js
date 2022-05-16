@@ -40,18 +40,21 @@ app.use(cors());
 app.use(express.json());
 //---------------------------------------
 
+const PORT = process.env.PORT || 7000
 
 //----------------------------------
-app.listen(process.env.PORT || 7000);
+app.listen(PORT, ()=>{
+    console.log(`listening on port ${PORT}`);
+});
 //----------------------------------
 
 
 
 //---------------------------------need to learn more about this------------------------------------------
 if (process.env.NODE_ENV === 'producton'){
-    app.use(express.static(path.join(__dirname,'../client/build')))
+    app.use(express.static(path.join(__dirname,'/client,build')))
     app.get('*',(req,res)=>{
-        res.sendFile(path.join(__dirname,'../client/build','index.html'))
+        res.sendFile(path.join(__dirname,'/client','build','index.html'))
     })
 }
 //---------------------------------------------------------------------------
