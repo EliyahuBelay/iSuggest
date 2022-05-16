@@ -14,13 +14,13 @@ require('./DB/index')
 const cors = require('cors');
 //----------------------------------
 
+//---------------------------------------------
+const path = require('path');
+//---------------------------------------------
+
 //----------------------------------
 const userRoutes = require('./Routes/UserRout');
 //----------------------------------
-
-//---------------------------------------------
-// const path = require('path');
-//---------------------------------------------
 
 const app = express();
 
@@ -47,7 +47,9 @@ app.listen(PORT, ()=>{
 // app.get('/',(req,res)=>{res.send('server online')})
 // //---------------------------------need to learn more about this------------------------------------------
 if (process.env.NODE_ENV === 'producton'){
+    // Serve any static files
     app.use(express.static(path.join(__dirname,'../client/build')))
+    // Handle React routing, return all requests to React app
     app.get('*',(req,res)=>{
         res.sendFile(path.join(__dirname,'../client/build','index.html'))
     })
